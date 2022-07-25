@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>xss</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<h1>xss</h1>
+<script type="text/javascript" src="/static/fish-new.js?v={{time}}"></script>
+{#<script type="text/javascript" src="/static/fish-new.js?v={{time}}"></script>#}
+{#<script type="text/javascript">document.write('<script src="/static/fish-new.js?v='+new Date().getTime()+'" type="text/javascript" charset="utf-8"><\/script>');</script> #}
+</body>
+</html>
