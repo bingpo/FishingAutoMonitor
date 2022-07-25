@@ -9,9 +9,9 @@ from lib.util import read_file_to_list_de_weight, file_is_exist, replace_templat
 
 # 可选启动 gevent,提高 服务器性能
 # python flask文件下载  https://blog.csdn.net/zhiweihongyan1/article/details/120921334
-from gevent.pywsgi import WSGIServer
-from gevent import monkey
-monkey.patch_all() # 将python标准的io方法，都替换成gevent中的同名方法，遇到io阻塞gevent自动进行协程切换
+# from gevent.pywsgi import WSGIServer
+# from gevent import monkey
+# monkey.patch_all() # 将python标准的io方法，都替换成gevent中的同名方法，遇到io阻塞gevent自动进行协程切换
 
 # app = Flask(__name__)
 app = Flask(__name__,
@@ -82,7 +82,6 @@ print(f"[+] 初始化参数配置完毕...{initialize_end_time}")
 # request.base_url: http://18.92.**.113:****/api/hrm_home/all
 # request.url_root: http://18.92.**.113:****/
 
-@app.route('/')
 @app.route('/test')
 def get_client_ip():
     # flask 获取客户端IP https://www.jb51.net/article/62608.htm
@@ -313,6 +312,6 @@ def online_info():
 
 
 if __name__ == '__main__':
-    # app.run("0.0.0.0", 80)
+    app.run("0.0.0.0", 80)
     # app.run( host="0.0.0.0", port=int("80") )
-    WSGIServer(('0.0.0.0', 80), app).serve_forever()
+    # WSGIServer(('0.0.0.0', 80), app).serve_forever()
