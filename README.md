@@ -58,6 +58,8 @@ DOWNLOAD = f"{PROTOCOL}://{DOMAIN}/download/notepad.exe" #替换module文件夹�
 
 注意：浏览器存在静态文件缓存、测试页面已解决该问题
 
+注意：可先在module或static目录使用自己的诱导模板，欢迎大家提交JS模板
+
 
 
 ### 3、设置上线成功条件
