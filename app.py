@@ -241,7 +241,7 @@ def static_file(file_name):
 
 
 # 记录CS服务器传来的IP信息
-# /store?action=store&internalIP=192.168.88.88&userName=hong66&computerName=hong66-pc&externalIP=88.88.88.88
+# /store?action=store&internalIP=192.168.1.1&userName=hong66&computerName=hong66-pc&externalIP=88.88.88.88
 @app.route('/store', methods=['GET', 'POST'])
 def store_info():
     full_url = request.url
